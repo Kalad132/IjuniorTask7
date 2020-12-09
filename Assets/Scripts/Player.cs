@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(BoxCollider2D))]
+
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -16,10 +21,10 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        _animator = gameObject.GetComponent<Animator>();
-        _sprite = gameObject.GetComponent<SpriteRenderer>();
-        _rigidbody = gameObject.GetComponent<Rigidbody2D>();
-        _collider = gameObject.GetComponent<BoxCollider2D>();
+        _animator = GetComponent<Animator>();
+        _sprite = GetComponent<SpriteRenderer>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _collider = GetComponent<BoxCollider2D>();
     }
     private void Update()
     {
@@ -36,7 +41,7 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        gameObject.transform.Translate(new Vector2(_direction * _speed * Time.deltaTime, 0));
+        transform.Translate(new Vector2(_direction * _speed * Time.deltaTime, 0));
     }
 
     private void SetDirection(int direction)

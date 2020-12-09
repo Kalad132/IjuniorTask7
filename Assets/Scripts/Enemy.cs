@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        Transform[] pathPoints = gameObject.GetComponentsInChildren<Transform>();
+        Transform[] pathPoints = GetComponentsInChildren<Transform>();
         _wayPoints = new Vector3[pathPoints.Length];
         for (int i = 0; i<_wayPoints.Length; i++)
             _wayPoints[i] = pathPoints[i].position;
